@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Serenata Studio - Demonstrações</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background: transparent;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+}
+
+.cabecalho {
+    background: #111;
+    border: 2px solid #f5c400;
+    border-radius: 18px;
+    padding: 25px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cabecalho h1 {
+    margin: 0;
+    color: #f5c400;
+    font-size: 28px;
+}
+
+.cabecalho p {
+    margin: 8px 0 0;
+    color: #ddd;
+}
+
+.categoria {
+    color: #f5c400;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 25px 0 10px;
+}
+
+.audio-box {
+    background: #111;
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 12px;
+    border: 1px solid #333;
+}
+
+.audio-titulo {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.audio-descricao {
+    font-size: 12px;
+    color: #aaa;
+    margin-bottom: 12px;
+}
+
+.controles {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.botao {
+    width: 42px;
+    height: 42px;
+    border: 0;
+    border-radius: 50%;
+    background: #f5c400;
+    color: #111;
+    font-size: 17px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.progresso {
+    flex: 1;
+    cursor: pointer;
+}
+
+.tempo {
+    font-size: 11px;
+    color: #ccc;
+    min-width: 80px;
+    text-align: right;
+}
+
+.volume {
+    width: 70px;
+}
+
+audio {
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="cabecalho">
+        <h1>🎙️ SERENATA STUDIO</h1>
+        <p>Produção profissional de áudio</p>
+    </div>
+
+
+    <!-- JINGLES -->
+
+    <div class="categoria">🎵 JINGLES</div>
+
+    <div class="audio-box">
+
+        <div class="audio-titulo">
+            Jingle Ponto da Moda 2
+        </div>
+
+        <div class="audio-descricao">
+            Demonstração de jingle comercial
+        </div>
+
+        <div class="controles">
+
+            <button class="botao" onclick="tocar(0)">
+                ▶
+            </button>
+
+            <input
+                class="progresso"
+                type="range"
+                min="0"
+                max="100"
+                value="0"
+                oninput="buscar(0,this.value)"
+            >
+
+            <div class="tempo">
+                <span id="tempo0">00:00 / 00:00</span>
+            </div>
+
+            <input
+                class="volume"
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                value="1"
+                oninput="volume(0,this.value)"
+            >
+
+        </div>
+
+        <audio id="audio0">
+            <source
+                src="JINGLE%20PONTO%20DA%20MODA%202.wav"
+                type="audio/wav"
+            >
+        </audio>
+
+    </div>
+
+
+    <!-- SPOTS -->
+
+    <div class="categoria">📢 SPOTS COMERCIAIS</div>
+
+    <div class="audio-box">
+
+        <div class="audio-titulo">
+            Spot Comercial — Demonstração
+        </div>
+
+        <div class="audio-descricao">
+            Exemplo de produção comercial
+        </div>
+
+        <div class="controles">
+
+            <button class="botao">
+                ▶
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- VINHETAS -->
+
+    <div class="categoria">📻 VINHETAS</div>
+
+    <div class="audio-box">
+
+        <div class="audio-titulo">
+            Vinheta — Demonstração
+        </div>
+
+        <div class="audio-descricao">
+            Exemplo de vinheta para rádio
+        </div>
+
+        <div class="controles">
+
+            <button class="botao">
+                ▶
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const audios = [
+    document.getElementById("audio0")
+];
+
+function tocar(numero) {
+
+    audios.forEach((audio, i) => {
+
+        if (i !== numero) {
+            audio.pause();
+        }
+
+    });
+
+    const audio = audios[numero];
+    const botao = document.querySelectorAll(".botao")[numero];
+
+    if (audio.paused) {
+
+        audio.play();
+
+        botao.textContent = "❚❚";
+
+    } else {
+
+        audio.pause();
+
+        botao.textContent = "▶";
+
+    }
+
+}
+
+function buscar(numero, valor) {
+
+    const audio = audios[numero];
+
+    if (audio.duration) {
+
+        audio.currentTime =
+            (valor / 100) * audio.duration;
+
+    }
+
+}
+
+function volume(numero, valor) {
+
+    audios[numero].volume = valor;
+
+}
+
+function formatar(segundos) {
+
+    if (!isFinite(segundos)) {
+        return "00:00";
+    }
+
+    const minutos =
+        Math.floor(segundos / 60);
+
+    const segundosRestantes =
+        Math.floor(segundos % 60);
+
+    return String(minutos).padStart(2,"0")
+        + ":" +
+        String(segundosRestantes).padStart(2,"0");
+
+}
+
+const audio0 = document.getElementById("audio0");
+
+audio0.addEventListener("timeupdate", () => {
+
+    const barra =
+        document.querySelector(".progresso");
+
+    if (audio0.duration) {
+
+        barra.value =
+            (audio0.currentTime /
+            audio0.duration) * 100;
+
+    }
+
+    document.getElementById("tempo0").textContent =
+        formatar(audio0.currentTime)
+        + " / "
+        + formatar(audio0.duration);
+
+});
+
+audio0.addEventListener("ended", () => {
+
+    document.querySelector(".botao").textContent = "▶";
+
+});
+
+</script>
+
+</body>
+</html>
