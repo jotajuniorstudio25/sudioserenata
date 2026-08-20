@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Serenata Studio - Demonstrações</title>
+<title>Serenata Studio</title>
 
 <style>
 * {
@@ -13,90 +13,106 @@
 
 body {
     margin: 0;
-    padding: 20px;
+    padding: 15px;
     background: transparent;
-    font-family: Arial, sans-serif;
-    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
 }
 
 .container {
-    max-width: 700px;
+    width: 100%;
+    max-width: 760px;
     margin: auto;
 }
 
-.cabecalho {
+/* CABEÇALHO */
+
+.header {
     background: #111;
     border: 2px solid #f5c400;
     border-radius: 18px;
-    padding: 25px;
+    padding: 25px 20px;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
-.cabecalho h1 {
+.header h1 {
     margin: 0;
     color: #f5c400;
     font-size: 28px;
 }
 
-.cabecalho p {
+.header p {
     margin: 8px 0 0;
-    color: #ddd;
+    color: #ccc;
+    font-size: 14px;
 }
 
-.categoria {
+/* CATEGORIA */
+
+.category {
     color: #f5c400;
-    font-size: 18px;
+    font-size: 19px;
     font-weight: bold;
-    margin: 25px 0 10px;
+    margin: 25px 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #333;
 }
+
+/* ÁUDIO */
 
 .audio-box {
     background: #111;
+    border: 1px solid #333;
     border-radius: 14px;
     padding: 16px;
     margin-bottom: 12px;
-    border: 1px solid #333;
 }
 
-.audio-titulo {
+.audio-title {
+    font-size: 16px;
     font-weight: bold;
-    margin-bottom: 4px;
+    margin-bottom: 5px;
 }
 
-.audio-descricao {
+.audio-description {
+    color: #999;
     font-size: 12px;
-    color: #aaa;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 }
 
-.controles {
+.controls {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.botao {
-    width: 42px;
-    height: 42px;
-    border: 0;
+.play {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border: none;
     border-radius: 50%;
     background: #f5c400;
     color: #111;
     font-size: 17px;
-    cursor: pointer;
     font-weight: bold;
+    cursor: pointer;
 }
 
-.progresso {
+.play:hover {
+    transform: scale(1.05);
+}
+
+.progress {
     flex: 1;
     cursor: pointer;
 }
 
-.tempo {
+.time {
     font-size: 11px;
     color: #ccc;
-    min-width: 80px;
+    min-width: 85px;
     text-align: right;
 }
 
@@ -104,8 +120,29 @@ body {
     width: 70px;
 }
 
-audio {
-    display: none;
+/* CELULAR */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 8px;
+    }
+
+    .header h1 {
+        font-size: 23px;
+    }
+
+    .controls {
+        gap: 6px;
+    }
+
+    .volume {
+        width: 55px;
+    }
+
+    .time {
+        min-width: 70px;
+    }
 }
 </style>
 </head>
@@ -114,216 +151,455 @@ audio {
 
 <div class="container">
 
-    <div class="cabecalho">
-        <h1>🎙️ SERENATA STUDIO</h1>
-        <p>Produção profissional de áudio</p>
-    </div>
+<div class="header">
+    <h1>🎙️ SERENATA STUDIO</h1>
+    <p>Produção profissional de áudio para rádio, lojas e empresas</p>
+</div>
 
 
-    <!-- JINGLES -->
+<!-- ABERTURAS -->
 
-    <div class="categoria">🎵 JINGLES</div>
+<div class="category">🎙️ ABERTURAS DE PROGRAMAS</div>
 
-    <div class="audio-box">
+<div class="audio-box">
+<div class="audio-title">Abertura de Programa de Rádio 3</div>
+<div class="audio-description">Demonstração de abertura de programa</div>
+<div class="controls">
+<button class="play" onclick="toggleAudio(0)">▶</button>
+<input class="progress" id="progress0" type="range" min="0" max="100" value="0">
+<span class="time" id="time0">00:00 / 00:00</span>
+<input class="volume" id="volume0" type="range" min="0" max="1" step="0.01" value="1">
+</div>
+<audio id="audio0" src="Abertura%20de%20programa%20de%20r%C3%A1dio%203.mp3"></audio>
+</div>
 
-        <div class="audio-titulo">
-            Jingle Ponto da Moda 2
-        </div>
+<div class="audio-box">
+<div class="audio-title">Abertura Programa Love Time</div>
+<div class="audio-description">Demonstração de abertura de programa</div>
+<div class="controls">
+<button class="play" onclick="toggleAudio(1)">▶</button>
+<input class="progress" id="progress1" type="range" min="0" max="100" value="0">
+<span class="time" id="time1">00:00 / 00:00</span>
+<input class="volume" id="volume1" type="range" min="0" max="1" step="0.01" value="1">
+</div>
+<audio id="audio1" src="Abertura%20Programa%20Love%20time.mp3"></audio>
+</div>
 
-        <div class="audio-descricao">
-            Demonstração de jingle comercial
-        </div>
+<div class="audio-box">
+<div class="audio-title">Abertura Programa Show da Noite</div>
+<div class="audio-description">Demonstração de abertura de programa</div>
+<div class="controls">
+<button class="play" onclick="toggleAudio(2)">▶</button>
+<input class="progress" id="progress2" type="range" min="0" max="100" value="0">
+<span class="time" id="time2">00:00 / 00:00</span>
+<input class="volume" id="volume2" type="range" min="0" max="1" step="0.01" value="1">
+</div>
+<audio id="audio2" src="Abertura%20Programa%20Show%20da%20noite.wav"></audio>
+</div>
 
-        <div class="controles">
-
-            <button class="botao" onclick="tocar(0)">
-                ▶
-            </button>
-
-            <input
-                class="progresso"
-                type="range"
-                min="0"
-                max="100"
-                value="0"
-                oninput="buscar(0,this.value)"
-            >
-
-            <div class="tempo">
-                <span id="tempo0">00:00 / 00:00</span>
-            </div>
-
-            <input
-                class="volume"
-                type="range"
-                min="0"
-                max="1"
-                step="0.01"
-                value="1"
-                oninput="volume(0,this.value)"
-            >
-
-        </div>
-
-        <audio id="audio0">
-            <source
-                src="JINGLE%20PONTO%20DA%20MODA%202.wav"
-                type="audio/wav"
-            >
-        </audio>
-
-    </div>
+<div class="audio-box">
+<div class="audio-title">Abertura Programa Show da Tarde</div>
+<div class="audio-description">Demonstração de abertura de programa</div>
+<div class="controls">
+<button class="play" onclick="toggleAudio(3)">▶</button>
+<input class="progress" id="progress3" type="range" min="0" max="100" value="0">
+<span class="time" id="time3">00:00 / 00:00</span>
+<input class="volume" id="volume3" type="range" min="0" max="1" step="0.01" value="1">
+</div>
+<audio id="audio3" src="Abertura%20Programa%20Show%20da%20tarde.wav"></audio>
+</div>
 
 
-    <!-- SPOTS -->
+<!-- SEQUÊNCIA -->
 
-    <div class="categoria">📢 SPOTS COMERCIAIS</div>
+<div class="category">🎧 SEQUÊNCIA DE PROGRAMA</div>
 
-    <div class="audio-box">
+<div class="audio-box">
+<div class="audio-title">Locutora na Sequência de Programa</div>
+<div class="audio-description">Demonstração de locução para sequência de programação</div>
+<div class="controls">
+<button class="play" onclick="toggleAudio(4)">▶</button>
+<input class="progress" id="progress4" type="range" min="0" max="100" value="0">
+<span class="time" id="time4">00:00 / 00:00</span>
+<input class="volume" id="volume4" type="range" min="0" max="1" step="0.01" value="1">
+</div>
+<audio id="audio4" src="Locutora%20na%20sequ%C3%AAncia%20de%20programa.wav"></audio>
+</div>
 
-        <div class="audio-titulo">
-            Spot Comercial — Demonstração
-        </div>
-
-        <div class="audio-descricao">
-            Exemplo de produção comercial
-        </div>
-
-        <div class="controles">
-
-            <button class="botao">
-                ▶
-            </button>
-
-        </div>
-
-    </div>
+<div class="audio-box">
+<div class="audio-title">Locutora na Sequência de Programa 2</div>
+<div class="audio-description">Demonstração de locução para sequência de programação</div>
+<div class="controls">
+<button class="play" onclick="toggleAudio(5)">▶</button>
+<input class="progress" id="progress5" type="range" min="0" max="100" value="0">
+<span class="time" id="time5">00:00 / 00:00</span>
+<input class="volume" id="volume5" type="range" min="0" max="1" step="0.01" value="1">
+</div>
+<audio id="audio5" src="Locutora%20na%20sequ%C3%AAncia%20de%20programa%202.mp3"></audio>
+</div>
 
 
-    <!-- VINHETAS -->
+<!-- JINGLES -->
 
-    <div class="categoria">📻 VINHETAS</div>
+<div class="category">🎵 JINGLES</div>
 
-    <div class="audio-box">
+<div class="audio-box">
+<div class="audio-title">Jingle de Rádio — Exemplo Serenata</div>
+<div class="audio-description">Demonstração de produção de jingle para rádio</div>
+<div class="controls">
+<button class="play" onclick="toggleAudio(6)">▶</button>
+<input class="progress" id="progress6" type="range" min="0" max="100" value="0">
+<span class="time" id="time6">00:00 / 00:00</span>
+<input class="volume" id="volume6" type="range" min="0" max="1" step="0.01" value="1">
+</div>
+<audio id="audio6" src="Jingle%20de%20r%C3%A1dio%20-%20Exemplo%20Serenata.wav"></audio>
+</div>
 
-        <div class="audio-titulo">
-            Vinheta — Demonstração
-        </div>
+<div class="audio-box">
+<div class="audio-title">Jingle Loja de Roupas</div>
+<div class="audio-description">Demonstração de jingle comercial</div>
+<div class="controls">
+<button class="play" onclick="toggleAudio(7)">▶</button>
+<input class="progress" id="progress7" type="range" min="0" max="100" value="0">
+<span class="time" id="time7">00:00 / 00:00</span>
+<input class="volume" id="volume7" type="range" min="0" max="1" step="0.01" value="1">
+</div>
+<audio id="audio7" src="Jingle%20loja%20de%20roupas.wav"></audio>
+</div>
 
-        <div class="audio-descricao">
-            Exemplo de vinheta para rádio
-        </div>
 
-        <div class="controles">
+<!-- LOCUÇÃO INDOOR -->
 
-            <button class="botao">
-                ▶
-            </button>
+<div class="category">🛒 LOCUÇÃO INDOOR</div>
 
-        </div>
+<div class="audio-box">
+<div class="audio-title">Locução Indoor Mercado — Açougue</div>
+<div class="audio-description">Demonstração para mercado e açougue</div>
+<div class="controls">
+<button class="play" onclick="toggleAudio(8)">▶</button>
+<input class="progress" id="progress8" type="range" min="0" max="100" value="0">
+<span class="time" id="time8">00:00 / 00:00</span>
+<input class="volume" id="volume8" type="range" min="0" max="1" step="0.01" value="1">
+</div>
+<audio id="audio8" src="locu%C3%A7%C3%A3o%20indoor%20mercado%20-%20a%C3%A7ougue.mp3"></audio>
+</div>
 
-    </div>
+<div class="audio-box">
+<div class="audio-title">Loja Indoor Roupas — Prezado Cliente</div>
+<div class="audio-description">Demonstração para loja de roupas</div>
+<div class="controls">
+<button class="play" onclick="toggleAudio(9)">▶</button>
+<input class="progress" id="progress9" type="range" min="0" max="100" value="0">
+<span class="time" id="time9">00:00 / 00:00</span>
+<input class="volume" id="volume9" type="range" min="0" max="1" step="0.01" value="1">
+</div>
+<audio id="audio9" src="loja%20indoor%20roupas%20-%20Prezado%20cliente.wav"></audio>
+</div>
+
+<div class="audio-box">
+<div class="audio-title">Locução Indoor Mercado — Congelados</div>
+<div class="audio-description">Demonstração para mercado</div>
+<div class="controls">
+<button class="play" onclick="toggleAudio(10)">▶</button>
+<input class="progress" id="progress10" type="range" min="0" max="100" value="0">
+<span class="time" id="time10">00:00 / 00:00</span>
+<input class="volume" id="volume10" type="range" min="0" max="1" step="0.01" value="1">
+</div>
+<audio id="audio10" src="lou%C3%A7%C3%A3o%20indoor%20mercado%20-%20Congelados.mp3"></audio>
+</div>
+
+
+<!-- CHAMADAS -->
+
+<div class="category">📻 CHAMADAS E INSTITUCIONAIS</div>
+
+<div class="audio-box">
+<div class="audio-title">Chamada de Rádio — Gênero Musical</div>
+<div class="audio-description">Demonstração de chamada de rádio</div>
+<div class="controls">
+<button class="play" onclick="toggleAudio(11)">▶</button>
+<input class="progress" id="progress11" type="range" min="0" max="100" value="0">
+<span class="time" id="time11">00:00 / 00:00</span>
+<input class="volume" id="volume11" type="range" min="0" max="1" step="0.01" value="1">
+</div>
+<audio id="audio11" src="Chamada%20de%20r%C3%A1dio%20-%20G%C3%AAnero%20musical.mp3"></audio>
+</div>
+
+<div class="audio-box">
+<div class="audio-title">Chamada Institucional</div>
+<div class="audio-description">Demonstração de chamada institucional</div>
+<div class="controls">
+<button class="play" onclick="toggleAudio(12)">▶</button>
+<input class="progress" id="progress12" type="range" min="0" max="100" value="0">
+<span class="time" id="time12">00:00 / 00:00</span>
+<input class="volume" id="volume12" type="range" min="0" max="1" step="0.01" value="1">
+</div>
+<audio id="audio12" src="Chamada%20Institucional.wav"></audio>
+</div>
+
+<div class="audio-box">
+<div class="audio-title">Quadro de Programa — A Música que Marcou</div>
+<div class="audio-description">Demonstração de quadro radiofônico</div>
+<div class="controls">
+<button class="play" onclick="toggleAudio(13)">▶</button>
+<input class="progress" id="progress13" type="range" min="0" max="100" value="0">
+<span class="time" id="time13">00:00 / 00:00</span>
+<input class="volume" id="volume13" type="range" min="0" max="1" step="0.01" value="1">
+</div>
+<audio id="audio13" src="Quadro%20de%20programa%20-%20A%20m%C3%BAsica%20que%20marcou.wav"></audio>
+</div>
+
+
+<!-- PROGRAMETES -->
+
+<div class="category">🌤️ PROGRAMETES</div>
+
+<div class="audio-box">
+<div class="audio-title">Dicas para o Inverno</div>
+<div class="audio-description">Demonstração de programete</div>
+<div class="controls">
+<button class="play" onclick="toggleAudio(14)">▶</button>
+<input class="progress" id="progress14" type="range" min="0" max="100" value="0">
+<span class="time" id="time14">00:00 / 00:00</span>
+<input class="volume" id="volume14" type="range" min="0" max="1" step="0.01" value="1">
+</div>
+<audio id="audio14" src="Programetes%20-%20Dicas%20para%20o%20inverno.wav"></audio>
+</div>
+
+
+<!-- SPOTS -->
+
+<div class="category">📢 SPOTS COMERCIAIS</div>
+
+<div class="audio-box">
+<div class="audio-title">Spot Anuncie na Rádio</div>
+<div class="audio-description">Demonstração de spot comercial</div>
+<div class="controls">
+<button class="play" onclick="toggleAudio(15)">▶</button>
+<input class="progress" id="progress15" type="range" min="0" max="100" value="0">
+<span class="time" id="time15">00:00 / 00:00</span>
+<input class="volume" id="volume15" type="range" min="0" max="1" step="0.01" value="1">
+</div>
+<audio id="audio15" src="Spot%20Anuncie%20na%20r%C3%A1dio.wav"></audio>
+</div>
+
+<div class="audio-box">
+<div class="audio-title">Spot Anuncie na Rádio 2</div>
+<div class="audio-description">Demonstração de spot comercial</div>
+<div class="controls">
+<button class="play" onclick="toggleAudio(16)">▶</button>
+<input class="progress" id="progress16" type="range" min="0" max="100" value="0">
+<span class="time" id="time16">00:00 / 00:00</span>
+<input class="volume" id="volume16" type="range" min="0" max="1" step="0.01" value="1">
+</div>
+<audio id="audio16" src="Spot%20anuncie%20na%20r%C3%A1dio%202.wav"></audio>
+</div>
+
+<div class="audio-box">
+<div class="audio-title">Spot Comercial para Empresa</div>
+<div class="audio-description">Demonstração de spot comercial</div>
+<div class="controls">
+<button class="play" onclick="toggleAudio(17)">▶</button>
+<input class="progress" id="progress17" type="range" min="0" max="100" value="0">
+<span class="time" id="time17">00:00 / 00:00</span>
+<input class="volume" id="volume17" type="range" min="0" max="1" step="0.01" value="1">
+</div>
+<audio id="audio17" src="Spot%20comercial%20para%20empresa.mp3"></audio>
+</div>
+
+<div class="audio-box">
+<div class="audio-title">Spot Comercial para Empresa 2</div>
+<div class="audio-description">Demonstração de spot comercial</div>
+<div class="controls">
+<button class="play" onclick="toggleAudio(18)">▶</button>
+<input class="progress" id="progress18" type="range" min="0" max="100" value="0">
+<span class="time" id="time18">00:00 / 00:00</span>
+<input class="volume" id="volume18" type="range" min="0" max="1" step="0.01" value="1">
+</div>
+<audio id="audio18" src="Spot%20comercial%20para%20empresa%202.wav"></audio>
+</div>
+
+
+<!-- VINHETAS -->
+
+<div class="category">🎚️ VINHETAS</div>
+
+<div class="audio-box">
+<div class="audio-title">Sequência de Programa — Vinheta de Passagem</div>
+<div class="audio-description">Demonstração de vinheta de passagem</div>
+<div class="controls">
+<button class="play" onclick="toggleAudio(19)">▶</button>
+<input class="progress" id="progress19" type="range" min="0" max="100" value="0">
+<span class="time" id="time19">00:00 / 00:00</span>
+<input class="volume" id="volume19" type="range" min="0" max="1" step="0.01" value="1">
+</div>
+<audio id="audio19" src="Sequ%C3%AAncia%20de%20programa%20-%20Vinheta%20de%20passagem.mp3"></audio>
+</div>
+
+<div class="audio-box">
+<div class="audio-title">Vinheta de Programa de Rádio</div>
+<div class="audio-description">Demonstração de vinheta</div>
+<div class="controls">
+<button class="play" onclick="toggleAudio(20)">▶</button>
+<input class="progress" id="progress20" type="range" min="0" max="100" value="0">
+<span class="time" id="time20">00:00 / 00:00</span>
+<input class="volume" id="volume20" type="range" min="0" max="1" step="0.01" value="1">
+</div>
+<audio id="audio20" src="Vinhet%20de%20programa%20de%20r%C3%A1dio.wav"></audio>
+</div>
+
+<div class="audio-box">
+<div class="audio-title">Vinheta Abertura de Programa 1</div>
+<div class="audio-description">Demonstração de vinheta de abertura</div>
+<div class="controls">
+<button class="play" onclick="toggleAudio(21)">▶</button>
+<input class="progress" id="progress21" type="range" min="0" max="100" value="0">
+<span class="time" id="time21">00:00 / 00:00</span>
+<input class="volume" id="volume21" type="range" min="0" max="1" step="0.01" value="1">
+</div>
+<audio id="audio21" src="Vinheta%20abertura%20de%20programa%201.mp3"></audio>
+</div>
+
+<div class="audio-box">
+<div class="audio-title">Vinheta Abertura de Programa 2</div>
+<div class="audio-description">Demonstração de vinheta de abertura</div>
+<div class="controls">
+<button class="play" onclick="toggleAudio(22)">▶</button>
+<input class="progress" id="progress22" type="range" min="0" max="100" value="0">
+<span class="time" id="time22">00:00 / 00:00</span>
+<input class="volume" id="volume22" type="range" min="0" max="1" step="0.01" value="1">
+</div>
+<audio id="audio22" src="Vinheta%20abertura%20de%20programa%202.mp3"></audio>
+</div>
 
 </div>
 
 
 <script>
 
-const audios = [
-    document.getElementById("audio0")
-];
+const audios = [];
 
-function tocar(numero) {
+for (let i = 0; i < 23; i++) {
+    audios.push(document.getElementById("audio" + i));
+}
 
-    audios.forEach((audio, i) => {
+const buttons = document.querySelectorAll(".play");
 
-        if (i !== numero) {
-            audio.pause();
+
+function toggleAudio(index) {
+
+    const audio = audios[index];
+
+    audios.forEach((item, i) => {
+
+        if (i !== index) {
+
+            item.pause();
+            buttons[i].textContent = "▶";
+
         }
 
     });
 
-    const audio = audios[numero];
-    const botao = document.querySelectorAll(".botao")[numero];
-
     if (audio.paused) {
 
-        audio.play();
+        audio.play().catch(error => {
+            console.log("Erro ao reproduzir:", error);
+        });
 
-        botao.textContent = "❚❚";
+        buttons[index].textContent = "❚❚";
 
     } else {
 
         audio.pause();
 
-        botao.textContent = "▶";
+        buttons[index].textContent = "▶";
 
     }
-
 }
 
-function buscar(numero, valor) {
 
-    const audio = audios[numero];
+function formatTime(seconds) {
 
-    if (audio.duration) {
-
-        audio.currentTime =
-            (valor / 100) * audio.duration;
-
-    }
-
-}
-
-function volume(numero, valor) {
-
-    audios[numero].volume = valor;
-
-}
-
-function formatar(segundos) {
-
-    if (!isFinite(segundos)) {
+    if (!isFinite(seconds)) {
         return "00:00";
     }
 
-    const minutos =
-        Math.floor(segundos / 60);
+    const minutes = Math.floor(seconds / 60);
 
-    const segundosRestantes =
-        Math.floor(segundos % 60);
+    const secs = Math.floor(seconds % 60);
 
-    return String(minutos).padStart(2,"0")
-        + ":" +
-        String(segundosRestantes).padStart(2,"0");
-
+    return String(minutes).padStart(2, "0") +
+           ":" +
+           String(secs).padStart(2, "0");
 }
 
-const audio0 = document.getElementById("audio0");
 
-audio0.addEventListener("timeupdate", () => {
+audios.forEach((audio, index) => {
 
-    const barra =
-        document.querySelector(".progresso");
+    const progress =
+        document.getElementById("progress" + index);
 
-    if (audio0.duration) {
+    const time =
+        document.getElementById("time" + index);
 
-        barra.value =
-            (audio0.currentTime /
-            audio0.duration) * 100;
+    const volume =
+        document.getElementById("volume" + index);
 
-    }
 
-    document.getElementById("tempo0").textContent =
-        formatar(audio0.currentTime)
-        + " / "
-        + formatar(audio0.duration);
+    audio.addEventListener("loadedmetadata", () => {
 
-});
+        time.textContent =
+            "00:00 / " +
+            formatTime(audio.duration);
 
-audio0.addEventListener("ended", () => {
+    });
 
-    document.querySelector(".botao").textContent = "▶";
+
+    audio.addEventListener("timeupdate", () => {
+
+        if (audio.duration) {
+
+            progress.value =
+                (audio.currentTime / audio.duration) * 100;
+
+        }
+
+        time.textContent =
+            formatTime(audio.currentTime) +
+            " / " +
+            formatTime(audio.duration);
+
+    });
+
+
+    progress.addEventListener("input", () => {
+
+        if (audio.duration) {
+
+            audio.currentTime =
+                (progress.value / 100) *
+                audio.duration;
+
+        }
+
+    });
+
+
+    volume.addEventListener("input", () => {
+
+        audio.volume = volume.value;
+
+    });
+
+
+    audio.addEventListener("ended", () => {
+
+        buttons[index].textContent = "▶";
+
+        progress.value = 0;
+
+    });
 
 });
 
