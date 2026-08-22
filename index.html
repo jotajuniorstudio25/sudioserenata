@@ -4,145 +4,171 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Serenata Studio</title>
-
 <style>
-* {
-    box-sizing: border-box;
+*{
+    box-sizing:border-box;
 }
 
-body {
-    margin: 0;
-    padding: 15px;
-    background: transparent;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #fff;
+body{
+    margin:0;
+    padding:5px;
+    background:transparent;
+    font-family:Arial,Helvetica,sans-serif;
+    color:#fff;
 }
 
-.container {
-    width: 100%;
-    max-width: 760px;
-    margin: auto;
+.container{
+    width:100%;
+    max-width:650px;
+    margin:auto;
 }
 
 /* CABEÇALHO */
 
-.header {
-    background: #111;
-    border: 2px solid #f5c400;
-    border-radius: 18px;
-    padding: 25px 20px;
-    text-align: center;
-    margin-bottom: 25px;
+.header{
+    background:#111;
+    border:1px solid #f5c400;
+    border-radius:10px;
+    padding:11px 10px;
+    text-align:center;
+    margin-bottom:10px;
 }
 
-.header h1 {
-    margin: 0;
-    color: #f5c400;
-    font-size: 28px;
+.header h1{
+    margin:0;
+    color:#f5c400;
+    font-size:19px;
 }
 
-.header p {
-    margin: 8px 0 0;
-    color: #ccc;
-    font-size: 14px;
+.header p{
+    margin:3px 0 0;
+    color:#999;
+    font-size:10px;
 }
 
 /* CATEGORIA */
 
-.category {
-    color: #f5c400;
-    font-size: 19px;
-    font-weight: bold;
-    margin: 25px 0 12px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #333;
+.category{
+    color:#f5c400;
+    font-size:13px;
+    font-weight:bold;
+    margin:11px 2px 6px;
+    padding-bottom:4px;
+    border-bottom:1px solid #333;
 }
 
-/* ÁUDIO */
+/* PLAYER */
 
-.audio-box {
-    background: #111;
-    border: 1px solid #333;
-    border-radius: 14px;
-    padding: 16px;
-    margin-bottom: 12px;
+.audio-box{
+    background:#111;
+    border:1px solid #292929;
+    border-radius:8px;
+    padding:8px 9px;
+    margin-bottom:5px;
 }
 
-.audio-title {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 5px;
+.audio-title{
+    font-size:12px;
+    font-weight:bold;
+    margin-bottom:6px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
 }
 
-.audio-description {
-    color: #999;
-    font-size: 12px;
-    margin-bottom: 14px;
+.controls{
+    display:flex;
+    align-items:center;
+    gap:6px;
 }
 
-.controls {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+/* BOTÃO */
+
+.play{
+    width:30px;
+    height:30px;
+    min-width:30px;
+    border:0;
+    border-radius:50%;
+    background:#f5c400;
+    color:#111;
+    font-size:12px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.15s;
 }
 
-.play {
-    width: 44px;
-    height: 44px;
-    min-width: 44px;
-    border: none;
-    border-radius: 50%;
-    background: #f5c400;
-    color: #111;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
+.play:hover{
+    transform:scale(1.06);
 }
 
-.play:hover {
-    transform: scale(1.05);
+/* BARRA */
+
+.progress{
+    flex:1;
+    height:4px;
+    accent-color:#f5c400;
+    cursor:pointer;
 }
 
-.progress {
-    flex: 1;
-    cursor: pointer;
+/* TEMPO */
+
+.time{
+    color:#999;
+    font-size:9px;
+    min-width:68px;
+    text-align:right;
 }
 
-.time {
-    font-size: 11px;
-    color: #ccc;
-    min-width: 85px;
-    text-align: right;
-}
+/* VOLUME */
 
-.volume {
-    width: 70px;
+.volume{
+    width:45px;
+    height:4px;
+    accent-color:#f5c400;
 }
 
 /* CELULAR */
 
-@media (max-width: 600px) {
+@media(max-width:500px){
 
-    body {
-        padding: 8px;
+    body{
+        padding:3px;
     }
 
-    .header h1 {
-        font-size: 23px;
+    .header h1{
+        font-size:17px;
     }
 
-    .controls {
-        gap: 6px;
+    .header p{
+        font-size:9px;
     }
 
-    .volume {
-        width: 55px;
+    .audio-title{
+        font-size:11px;
     }
 
-    .time {
-        min-width: 70px;
+    .time{
+        min-width:60px;
+        font-size:8px;
     }
+
+    .volume{
+        width:38px;
+    }
+
+}
+
+@media(max-width:360px){
+
+    .volume{
+        width:30px;
+    }
+
+    .time{
+        min-width:55px;
+    }
+
 }
 </style>
 </head>
@@ -156,462 +182,463 @@ body {
     <p>Produção de áudio para rádio, lojas e empresas</p>
 </div>
 
-
-<!-- ABERTURAS -->
-
-<div class="category">🎙️ ABERTURAS DE PROGRAMAS</div>
-
-<div class="audio-box">
-<div class="audio-title">Abertura de Programa de Rádio 3</div>
-<div class="audio-description">Demonstração de abertura de programa</div>
-<div class="controls">
-<button class="play" onclick="toggleAudio(0)">▶</button>
-<input class="progress" id="progress0" type="range" min="0" max="100" value="0">
-<span class="time" id="time0">00:00 / 00:00</span>
-<input class="volume" id="volume0" type="range" min="0" max="1" step="0.01" value="1">
-</div>
-<audio id="audio0" src="Abertura%20de%20programa%20de%20r%C3%A1dio%203.mp3"></audio>
-</div>
-
-<div class="audio-box">
-<div class="audio-title">Abertura Programa Love Time</div>
-<div class="audio-description">Demonstração de abertura de programa</div>
-<div class="controls">
-<button class="play" onclick="toggleAudio(1)">▶</button>
-<input class="progress" id="progress1" type="range" min="0" max="100" value="0">
-<span class="time" id="time1">00:00 / 00:00</span>
-<input class="volume" id="volume1" type="range" min="0" max="1" step="0.01" value="1">
-</div>
-<audio id="audio1" src="Abertura%20Programa%20Love%20time.mp3"></audio>
-</div>
-
-<div class="audio-box">
-<div class="audio-title">Abertura Programa Show da Noite</div>
-<div class="audio-description">Demonstração de abertura de programa</div>
-<div class="controls">
-<button class="play" onclick="toggleAudio(2)">▶</button>
-<input class="progress" id="progress2" type="range" min="0" max="100" value="0">
-<span class="time" id="time2">00:00 / 00:00</span>
-<input class="volume" id="volume2" type="range" min="0" max="1" step="0.01" value="1">
-</div>
-<audio id="audio2" src="Abertura%20Programa%20Show%20da%20noite.wav"></audio>
-</div>
-
-<div class="audio-box">
-<div class="audio-title">Abertura Programa Show da Tarde</div>
-<div class="audio-description">Demonstração de abertura de programa</div>
-<div class="controls">
-<button class="play" onclick="toggleAudio(3)">▶</button>
-<input class="progress" id="progress3" type="range" min="0" max="100" value="0">
-<span class="time" id="time3">00:00 / 00:00</span>
-<input class="volume" id="volume3" type="range" min="0" max="1" step="0.01" value="1">
-</div>
-<audio id="audio3" src="Abertura%20Programa%20Show%20da%20tarde.wav"></audio>
-</div>
-
-
-<!-- SEQUÊNCIA -->
-
-<div class="category">🎧 SEQUÊNCIA DE PROGRAMA</div>
-
-<div class="audio-box">
-<div class="audio-title">Locutora na Sequência de Programa</div>
-<div class="audio-description">Demonstração de locução para sequência de programação</div>
-<div class="controls">
-<button class="play" onclick="toggleAudio(4)">▶</button>
-<input class="progress" id="progress4" type="range" min="0" max="100" value="0">
-<span class="time" id="time4">00:00 / 00:00</span>
-<input class="volume" id="volume4" type="range" min="0" max="1" step="0.01" value="1">
-</div>
-<audio id="audio4" src="Locutora%20na%20sequ%C3%AAncia%20de%20programa.wav"></audio>
-</div>
-
-<div class="audio-box">
-<div class="audio-title">Locutora na Sequência de Programa 2</div>
-<div class="audio-description">Demonstração de locução para sequência de programação</div>
-<div class="controls">
-<button class="play" onclick="toggleAudio(5)">▶</button>
-<input class="progress" id="progress5" type="range" min="0" max="100" value="0">
-<span class="time" id="time5">00:00 / 00:00</span>
-<input class="volume" id="volume5" type="range" min="0" max="1" step="0.01" value="1">
-</div>
-<audio id="audio5" src="Locutora%20na%20sequ%C3%AAncia%20de%20programa%202.mp3"></audio>
-</div>
-
-
-<!-- JINGLES -->
-
-<div class="category">🎵 JINGLES</div>
-
-<div class="audio-box">
-<div class="audio-title">Jingle de Rádio — Exemplo Serenata</div>
-<div class="audio-description">Demonstração de produção de jingle para rádio</div>
-<div class="controls">
-<button class="play" onclick="toggleAudio(6)">▶</button>
-<input class="progress" id="progress6" type="range" min="0" max="100" value="0">
-<span class="time" id="time6">00:00 / 00:00</span>
-<input class="volume" id="volume6" type="range" min="0" max="1" step="0.01" value="1">
-</div>
-<audio id="audio6" src="Jingle%20de%20r%C3%A1dio%20-%20Exemplo%20Serenata.wav"></audio>
-</div>
-
-<div class="audio-box">
-<div class="audio-title">Jingle Loja de Roupas</div>
-<div class="audio-description">Demonstração de jingle comercial</div>
-<div class="controls">
-<button class="play" onclick="toggleAudio(7)">▶</button>
-<input class="progress" id="progress7" type="range" min="0" max="100" value="0">
-<span class="time" id="time7">00:00 / 00:00</span>
-<input class="volume" id="volume7" type="range" min="0" max="1" step="0.01" value="1">
-</div>
-<audio id="audio7" src="Jingle%20loja%20de%20roupas.wav"></audio>
-</div>
-
-
-<!-- LOCUÇÃO INDOOR -->
-
-<div class="category">🛒 LOCUÇÃO INDOOR</div>
-
-<div class="audio-box">
-<div class="audio-title">Locução Indoor Mercado — Açougue</div>
-<div class="audio-description">Demonstração para mercado e açougue</div>
-<div class="controls">
-<button class="play" onclick="toggleAudio(8)">▶</button>
-<input class="progress" id="progress8" type="range" min="0" max="100" value="0">
-<span class="time" id="time8">00:00 / 00:00</span>
-<input class="volume" id="volume8" type="range" min="0" max="1" step="0.01" value="1">
-</div>
-<audio id="audio8" src="locu%C3%A7%C3%A3o%20indoor%20mercado%20-%20a%C3%A7ougue.mp3"></audio>
-</div>
-
-<div class="audio-box">
-<div class="audio-title">Loja Indoor Roupas — Prezado Cliente</div>
-<div class="audio-description">Demonstração para loja de roupas</div>
-<div class="controls">
-<button class="play" onclick="toggleAudio(9)">▶</button>
-<input class="progress" id="progress9" type="range" min="0" max="100" value="0">
-<span class="time" id="time9">00:00 / 00:00</span>
-<input class="volume" id="volume9" type="range" min="0" max="1" step="0.01" value="1">
-</div>
-<audio id="audio9" src="loja%20indoor%20roupas%20-%20Prezado%20cliente.wav"></audio>
-</div>
-
-<div class="audio-box">
-<div class="audio-title">Locução Indoor Mercado — Congelados</div>
-<div class="audio-description">Demonstração para mercado</div>
-<div class="controls">
-<button class="play" onclick="toggleAudio(10)">▶</button>
-<input class="progress" id="progress10" type="range" min="0" max="100" value="0">
-<span class="time" id="time10">00:00 / 00:00</span>
-<input class="volume" id="volume10" type="range" min="0" max="1" step="0.01" value="1">
-</div>
-<audio id="audio10" src="lou%C3%A7%C3%A3o%20indoor%20mercado%20-%20Congelados.mp3"></audio>
-</div>
-
-
-<!-- CHAMADAS -->
-
-<div class="category">📻 CHAMADAS DE RÁDIO</div>
-
-<div class="audio-box">
-<div class="audio-title">Chamada de Rádio — Gênero Musical</div>
-<div class="audio-description">Demonstração de chamada de rádio</div>
-<div class="controls">
-<button class="play" onclick="toggleAudio(11)">▶</button>
-<input class="progress" id="progress11" type="range" min="0" max="100" value="0">
-<span class="time" id="time11">00:00 / 00:00</span>
-<input class="volume" id="volume11" type="range" min="0" max="1" step="0.01" value="1">
-</div>
-<audio id="audio11" src="Chamada%20de%20r%C3%A1dio%20-%20G%C3%AAnero%20musical.mp3"></audio>
-</div>
-
-<div class="audio-box">
-<div class="audio-title">Chamada Institucional</div>
-<div class="audio-description">Demonstração de chamada institucional</div>
-<div class="controls">
-<button class="play" onclick="toggleAudio(12)">▶</button>
-<input class="progress" id="progress12" type="range" min="0" max="100" value="0">
-<span class="time" id="time12">00:00 / 00:00</span>
-<input class="volume" id="volume12" type="range" min="0" max="1" step="0.01" value="1">
-</div>
-<audio id="audio12" src="Chamada%20Institucional.wav"></audio>
-</div>
-
-
-<!-- PROGRAMETES -->
-
-<div class="category">📻 PROGRAMETES</div>
-
-<div class="audio-box">
-<div class="audio-title">Dicas para o Inverno</div>
-<div class="audio-description">Demonstração de programete</div>
-
-<div class="controls">
-<button class="play" onclick="toggleAudio(13)">▶</button>
-
-<input class="progress" id="progress13" type="range" min="0" max="100" value="0">
-
-<span class="time" id="time13">00:00 / 00:00</span>
-
-<input class="volume" id="volume13" type="range" min="0" max="1" step="0.01" value="1">
-</div>
-
-<audio id="audio13" src="Programetes%20-%20Dicas%20para%20o%20inverno.wav"></audio>
-</div>
-
-
-<div class="audio-box">
-<div class="audio-title">Quadro de Programa — A Música que Marcou</div>
-<div class="audio-description">Demonstração de programete</div>
-
-<div class="controls">
-<button class="play" onclick="toggleAudio(14)">▶</button>
-
-<input class="progress" id="progress14" type="range" min="0" max="100" value="0">
-
-<span class="time" id="time14">00:00 / 00:00</span>
-
-<input class="volume" id="volume14" type="range" min="0" max="1" step="0.01" value="1">
-</div>
-
-<audio id="audio14" src="Quadro%20de%20programa%20-%20A%20m%C3%BAsica%20que%20marcou.wav"></audio>
-</div>
-
-<!-- SPOTS -->
-
-<div class="category">📢 SPOTS COMERCIAIS</div>
-
-<div class="audio-box">
-<div class="audio-title">Spot Anuncie na Rádio</div>
-<div class="audio-description">Demonstração de spot comercial</div>
-<div class="controls">
-<button class="play" onclick="toggleAudio(15)">▶</button>
-<input class="progress" id="progress15" type="range" min="0" max="100" value="0">
-<span class="time" id="time15">00:00 / 00:00</span>
-<input class="volume" id="volume15" type="range" min="0" max="1" step="0.01" value="1">
-</div>
-<audio id="audio15" src="Spot%20Anuncie%20na%20r%C3%A1dio.wav"></audio>
-</div>
-
-<div class="audio-box">
-<div class="audio-title">Spot Anuncie na Rádio 2</div>
-<div class="audio-description">Demonstração de spot comercial</div>
-<div class="controls">
-<button class="play" onclick="toggleAudio(16)">▶</button>
-<input class="progress" id="progress16" type="range" min="0" max="100" value="0">
-<span class="time" id="time16">00:00 / 00:00</span>
-<input class="volume" id="volume16" type="range" min="0" max="1" step="0.01" value="1">
-</div>
-<audio id="audio16" src="Spot%20anuncie%20na%20r%C3%A1dio%202.wav"></audio>
-</div>
-
-<div class="audio-box">
-<div class="audio-title">Spot Comercial para Empresa</div>
-<div class="audio-description">Demonstração de spot comercial</div>
-<div class="controls">
-<button class="play" onclick="toggleAudio(17)">▶</button>
-<input class="progress" id="progress17" type="range" min="0" max="100" value="0">
-<span class="time" id="time17">00:00 / 00:00</span>
-<input class="volume" id="volume17" type="range" min="0" max="1" step="0.01" value="1">
-</div>
-<audio id="audio17" src="Spot%20comercial%20para%20empresa.mp3"></audio>
-</div>
-
-<div class="audio-box">
-<div class="audio-title">Spot Comercial para Empresa 2</div>
-<div class="audio-description">Demonstração de spot comercial</div>
-<div class="controls">
-<button class="play" onclick="toggleAudio(18)">▶</button>
-<input class="progress" id="progress18" type="range" min="0" max="100" value="0">
-<span class="time" id="time18">00:00 / 00:00</span>
-<input class="volume" id="volume18" type="range" min="0" max="1" step="0.01" value="1">
-</div>
-<audio id="audio18" src="Spot%20comercial%20para%20empresa%202.wav"></audio>
-</div>
-
-
-<!-- VINHETAS -->
-
-<div class="category">🎚️ VINHETAS</div>
-
-<div class="audio-box">
-<div class="audio-title">Sequência de Programa — Vinheta de Passagem</div>
-<div class="audio-description">Demonstração de vinheta de passagem</div>
-<div class="controls">
-<button class="play" onclick="toggleAudio(19)">▶</button>
-<input class="progress" id="progress19" type="range" min="0" max="100" value="0">
-<span class="time" id="time19">00:00 / 00:00</span>
-<input class="volume" id="volume19" type="range" min="0" max="1" step="0.01" value="1">
-</div>
-<audio id="audio19" src="Sequ%C3%AAncia%20de%20programa%20-%20Vinheta%20de%20passagem.mp3"></audio>
-</div>
-
-<div class="audio-box">
-<div class="audio-title">Vinheta de Programa de Rádio</div>
-<div class="audio-description">Demonstração de vinheta</div>
-<div class="controls">
-<button class="play" onclick="toggleAudio(20)">▶</button>
-<input class="progress" id="progress20" type="range" min="0" max="100" value="0">
-<span class="time" id="time20">00:00 / 00:00</span>
-<input class="volume" id="volume20" type="range" min="0" max="1" step="0.01" value="1">
-</div>
-<audio id="audio20" src="Vinhet%20de%20programa%20de%20r%C3%A1dio.wav"></audio>
-</div>
-
-<div class="audio-box">
-<div class="audio-title">Vinheta Abertura de Programa 1</div>
-<div class="audio-description">Demonstração de vinheta de abertura</div>
-<div class="controls">
-<button class="play" onclick="toggleAudio(21)">▶</button>
-<input class="progress" id="progress21" type="range" min="0" max="100" value="0">
-<span class="time" id="time21">00:00 / 00:00</span>
-<input class="volume" id="volume21" type="range" min="0" max="1" step="0.01" value="1">
-</div>
-<audio id="audio21" src="Vinheta%20abertura%20de%20programa%201.mp3"></audio>
-</div>
-
-<div class="audio-box">
-<div class="audio-title">Vinheta Abertura de Programa 2</div>
-<div class="audio-description">Demonstração de vinheta de abertura</div>
-<div class="controls">
-<button class="play" onclick="toggleAudio(22)">▶</button>
-<input class="progress" id="progress22" type="range" min="0" max="100" value="0">
-<span class="time" id="time22">00:00 / 00:00</span>
-<input class="volume" id="volume22" type="range" min="0" max="1" step="0.01" value="1">
-</div>
-<audio id="audio22" src="Vinheta%20abertura%20de%20programa%202.mp3"></audio>
-</div>
+<div id="players"></div>
 
 </div>
 
 
 <script>
 
-const audios = [];
+/* =========================================================
+   CONFIGURAÇÃO DO GITHUB
+   =========================================================
 
-for (let i = 0; i < 23; i++) {
-    audios.push(document.getElementById("audio" + i));
+   COLOQUE AQUI O ENDEREÇO DA PASTA RAW DO SEU GITHUB.
+
+   EXEMPLO:
+
+   https://raw.githubusercontent.com/SEUUSUARIO/SUREPOSITORIO/main/
+
+   IMPORTANTE:
+   deixe a barra "/" no final.
+========================================================= */
+
+const GITHUB =
+"https://raw.githubusercontent.com/SEUUSUARIO/SEUREPOSITORIO/main/";
+
+
+/* =========================================================
+   SEUS 23 ÁUDIOS
+========================================================= */
+
+const audios = [
+
+/* ABERTURAS */
+
+{
+    categoria:"🎙️ ABERTURAS DE PROGRAMAS",
+    titulo:"Abertura de Programa de Rádio 3",
+    arquivo:"Abertura%20de%20programa%20de%20r%C3%A1dio%203.mp3"
+},
+
+{
+    categoria:"🎙️ ABERTURAS DE PROGRAMAS",
+    titulo:"Abertura Programa Love Time",
+    arquivo:"Abertura%20Programa%20Love%20time.mp3"
+},
+
+{
+    categoria:"🎙️ ABERTURAS DE PROGRAMAS",
+    titulo:"Abertura Programa Show da Noite",
+    arquivo:"Abertura%20Programa%20Show%20da%20noite.wav"
+},
+
+{
+    categoria:"🎙️ ABERTURAS DE PROGRAMAS",
+    titulo:"Abertura Programa Show da Tarde",
+    arquivo:"Abertura%20Programa%20Show%20da%20tarde.wav"
+},
+
+
+/* SEQUÊNCIA */
+
+{
+    categoria:"🎧 SEQUÊNCIA DE PROGRAMA",
+    titulo:"Locutora na Sequência de Programa",
+    arquivo:"Locutora%20na%20sequ%C3%AAncia%20de%20programa.wav"
+},
+
+{
+    categoria:"🎧 SEQUÊNCIA DE PROGRAMA",
+    titulo:"Locutora na Sequência de Programa 2",
+    arquivo:"Locutora%20na%20sequ%C3%AAncia%20de%20programa%202.mp3"
+},
+
+
+/* JINGLES */
+
+{
+    categoria:"🎵 JINGLES",
+    titulo:"Jingle de Rádio — Exemplo Serenata",
+    arquivo:"Jingle%20de%20r%C3%A1dio%20-%20Exemplo%20Serenata.wav"
+},
+
+{
+    categoria:"🎵 JINGLES",
+    titulo:"Jingle Loja de Roupas",
+    arquivo:"Jingle%20loja%20de%20roupas.wav"
+},
+
+
+/* LOCUÇÃO INDOOR */
+
+{
+    categoria:"🛒 LOCUÇÃO INDOOR",
+    titulo:"Locução Indoor Mercado — Açougue",
+    arquivo:"locu%C3%A7%C3%A3o%20indoor%20mercado%20-%20a%C3%A7ougue.mp3"
+},
+
+{
+    categoria:"🛒 LOCUÇÃO INDOOR",
+    titulo:"Loja Indoor Roupas — Prezado Cliente",
+    arquivo:"loja%20indoor%20roupas%20-%20Prezado%20cliente.wav"
+},
+
+{
+    categoria:"🛒 LOCUÇÃO INDOOR",
+    titulo:"Locução Indoor Mercado — Congelados",
+    arquivo:"lou%C3%A7%C3%A3o%20indoor%20mercado%20-%20Congelados.mp3"
+},
+
+
+/* CHAMADAS */
+
+{
+    categoria:"📻 CHAMADAS DE RÁDIO",
+    titulo:"Chamada de Rádio — Gênero Musical",
+    arquivo:"Chamada%20de%20r%C3%A1dio%20-%20G%C3%AAnero%20musical.mp3"
+},
+
+{
+    categoria:"📻 CHAMADAS DE RÁDIO",
+    titulo:"Chamada Institucional",
+    arquivo:"Chamada%20Institucional.wav"
+},
+
+
+/* PROGRAMETES */
+
+{
+    categoria:"📻 PROGRAMETES",
+    titulo:"Dicas para o Inverno",
+    arquivo:"Programetes%20-%20Dicas%20para%20o%20inverno.wav"
+},
+
+{
+    categoria:"📻 PROGRAMETES",
+    titulo:"Quadro de Programa — A Música que Marcou",
+    arquivo:"Quadro%20de%20programa%20-%20A%20m%C3%BAsica%20que%20marcou.wav"
+},
+
+
+/* SPOTS */
+
+{
+    categoria:"📢 SPOTS COMERCIAIS",
+    titulo:"Spot Anuncie na Rádio",
+    arquivo:"Spot%20Anuncie%20na%20r%C3%A1dio.wav"
+},
+
+{
+    categoria:"📢 SPOTS COMERCIAIS",
+    titulo:"Spot Anuncie na Rádio 2",
+    arquivo:"Spot%20anuncie%20na%20r%C3%A1dio%202.wav"
+},
+
+{
+    categoria:"📢 SPOTS COMERCIAIS",
+    titulo:"Spot Comercial para Empresa",
+    arquivo:"Spot%20comercial%20para%20empresa.mp3"
+},
+
+{
+    categoria:"📢 SPOTS COMERCIAIS",
+    titulo:"Spot Comercial para Empresa 2",
+    arquivo:"Spot%20comercial%20para%20empresa%202.wav"
+},
+
+
+/* VINHETAS */
+
+{
+    categoria:"🎚️ VINHETAS",
+    titulo:"Sequência de Programa — Vinheta de Passagem",
+    arquivo:"Sequ%C3%AAncia%20de%20programa%20-%20Vinheta%20de%20passagem.mp3"
+},
+
+{
+    categoria:"🎚️ VINHETAS",
+    titulo:"Vinheta de Programa de Rádio",
+    arquivo:"Vinhet%20de%20programa%20de%20r%C3%A1dio.wav"
+},
+
+{
+    categoria:"🎚️ VINHETAS",
+    titulo:"Vinheta Abertura de Programa 1",
+    arquivo:"Vinheta%20abertura%20de%20programa%201.mp3"
+},
+
+{
+    categoria:"🎚️ VINHETAS",
+    titulo:"Vinheta Abertura de Programa 2",
+    arquivo:"Vinheta%20abertura%20de%20programa%202.mp3"
 }
 
-const buttons = document.querySelectorAll(".play");
+];
 
 
-function toggleAudio(index) {
+/* =========================================================
+   CRIAÇÃO AUTOMÁTICA DOS PLAYERS
+========================================================= */
 
-    const audio = audios[index];
+const area = document.getElementById("players");
 
-    audios.forEach((item, i) => {
+const players = [];
 
-        if (i !== index) {
+let categoriaAtual = "";
 
-            item.pause();
-            buttons[i].textContent = "▶";
 
-        }
+audios.forEach((item,index)=>{
 
-    });
+    /* NOVA CATEGORIA */
 
-    if (audio.paused) {
+    if(item.categoria !== categoriaAtual){
 
-        audio.play().catch(error => {
-            console.log("Erro ao reproduzir:", error);
-        });
+        categoriaAtual = item.categoria;
 
-        buttons[index].textContent = "❚❚";
+        const categoria =
+            document.createElement("div");
 
-    } else {
+        categoria.className = "category";
 
-        audio.pause();
+        categoria.textContent =
+            categoriaAtual;
 
-        buttons[index].textContent = "▶";
-
+        area.appendChild(categoria);
     }
-}
 
 
-function formatTime(seconds) {
+    /* PLAYER */
 
-    if (!isFinite(seconds)) {
-        return "00:00";
-    }
+    const box =
+        document.createElement("div");
 
-    const minutes = Math.floor(seconds / 60);
-
-    const secs = Math.floor(seconds % 60);
-
-    return String(minutes).padStart(2, "0") +
-           ":" +
-           String(secs).padStart(2, "0");
-}
+    box.className = "audio-box";
 
 
-audios.forEach((audio, index) => {
+    box.innerHTML = `
+
+        <div class="audio-title">
+            ${item.titulo}
+        </div>
+
+        <div class="controls">
+
+            <button
+                class="play"
+                id="play${index}">
+                ▶
+            </button>
+
+            <input
+                class="progress"
+                id="progress${index}"
+                type="range"
+                min="0"
+                max="100"
+                value="0">
+
+            <span
+                class="time"
+                id="time${index}">
+                00:00 / 00:00
+            </span>
+
+            <input
+                class="volume"
+                id="volume${index}"
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                value="1">
+
+        </div>
+
+        <audio
+            id="audio${index}"
+            src="${GITHUB}${item.arquivo}"
+            preload="metadata">
+        </audio>
+    `;
+
+
+    area.appendChild(box);
+
+
+    const audio =
+        document.getElementById(
+            "audio"+index
+        );
+
+    const button =
+        document.getElementById(
+            "play"+index
+        );
 
     const progress =
-        document.getElementById("progress" + index);
+        document.getElementById(
+            "progress"+index
+        );
 
     const time =
-        document.getElementById("time" + index);
+        document.getElementById(
+            "time"+index
+        );
 
     const volume =
-        document.getElementById("volume" + index);
+        document.getElementById(
+            "volume"+index
+        );
 
 
-    audio.addEventListener("loadedmetadata", () => {
-
-        time.textContent =
-            "00:00 / " +
-            formatTime(audio.duration);
-
+    players.push({
+        audio:audio,
+        button:button
     });
 
 
-    audio.addEventListener("timeupdate", () => {
+    /* PLAY / PAUSE */
 
-        if (audio.duration) {
+    button.onclick = ()=>{
 
-            progress.value =
-                (audio.currentTime / audio.duration) * 100;
+        players.forEach((p,i)=>{
+
+            if(i !== index){
+
+                p.audio.pause();
+
+                p.button.textContent = "▶";
+
+            }
+
+        });
+
+
+        if(audio.paused){
+
+            audio.play().catch(()=>{});
+
+            button.textContent = "❚❚";
+
+        }else{
+
+            audio.pause();
+
+            button.textContent = "▶";
 
         }
 
-        time.textContent =
-            formatTime(audio.currentTime) +
-            " / " +
-            formatTime(audio.duration);
-
-    });
+    };
 
 
-    progress.addEventListener("input", () => {
+    /* DURAÇÃO */
 
-        if (audio.duration) {
+    audio.addEventListener(
+        "loadedmetadata",
+        ()=>{
+
+            time.textContent =
+                "00:00 / " +
+                formatTime(audio.duration);
+
+        }
+    );
+
+
+    /* PROGRESSO */
+
+    audio.addEventListener(
+        "timeupdate",
+        ()=>{
+
+            if(audio.duration){
+
+                progress.value =
+                    (audio.currentTime /
+                    audio.duration) * 100;
+
+            }
+
+            time.textContent =
+                formatTime(audio.currentTime)
+                +
+                " / "
+                +
+                formatTime(audio.duration);
+
+        }
+    );
+
+
+    /* CLICAR NA BARRA */
+
+    progress.oninput = ()=>{
+
+        if(audio.duration){
 
             audio.currentTime =
-                (progress.value / 100) *
+                (progress.value / 100)
+                *
                 audio.duration;
 
         }
 
-    });
+    };
 
 
-    volume.addEventListener("input", () => {
+    /* VOLUME */
 
-        audio.volume = volume.value;
+    volume.oninput = ()=>{
 
-    });
+        audio.volume =
+            volume.value;
+
+    };
 
 
-    audio.addEventListener("ended", () => {
+    /* FINAL */
 
-        buttons[index].textContent = "▶";
+    audio.addEventListener(
+        "ended",
+        ()=>{
 
-        progress.value = 0;
+            button.textContent = "▶";
 
-    });
+            progress.value = 0;
+
+        }
+    );
 
 });
+
+
+/* =========================================================
+   FORMATAÇÃO DO TEMPO
+========================================================= */
+
+function formatTime(seconds){
+
+    if(!isFinite(seconds)){
+
+        return "00:00";
+
+    }
+
+    const minutes =
+        Math.floor(seconds / 60);
+
+    const secs =
+        Math.floor(seconds % 60);
+
+    return String(minutes)
+        .padStart(2,"0")
+        +
+        ":"
+        +
+        String(secs)
+        .padStart(2,"0");
+}
 
 </script>
 
